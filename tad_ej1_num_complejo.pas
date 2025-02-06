@@ -24,31 +24,31 @@ begin
     writeln('Parte imaginaria de c2: ', parteImaginaria:0:2);
 
     // Sumar dos números complejos
-    resultado := Sumar(c1, c2);
+    Sumar(resultado, c1, c2);
     parteReal := GetParteReal(resultado);
     parteImaginaria := GetParteImaginaria(resultado);
     writeln('Suma: ', parteReal:0:2, ' + ', parteImaginaria:0:2, 'i');
 
     // Restar dos números complejos
-    resultado := Restar(c1, c2);
+    Restar(resultado, c1, c2);
     parteReal := GetParteReal(resultado);
     parteImaginaria := GetParteImaginaria(resultado);
     writeln('Resta: ', parteReal:0:2, ' + ', parteImaginaria:0:2, 'i');
 
     // Multiplicar dos números complejos
-    resultado := Multiplicar(c1, c2);
+    Multiplicar(resultado, c1, c2);
     parteReal := GetParteReal(resultado);
     parteImaginaria := GetParteImaginaria(resultado);
     writeln('Multiplicación: ', parteReal:0:2, ' + ', parteImaginaria:0:2, 'i');
 
     // Dividir dos números complejos
-    resultado := Dividir(c1, c2);
+    Dividir(resultado, c1, c2);
     parteReal := GetParteReal(resultado);
     parteImaginaria := GetParteImaginaria(resultado);
     writeln('División: ', parteReal:0:2, ' + ', parteImaginaria:0:2, 'i');
 
     // Elevar un número complejo a una potencia
-    resultado := Potencia(c1, 2);
+    Potencia(resultado, c1, 2);
     parteReal := GetParteReal(resultado);
     parteImaginaria := GetParteImaginaria(resultado);
     writeln('Potencia: ', parteReal:0:2, ' + ', parteImaginaria:0:2, 'i');

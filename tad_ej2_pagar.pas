@@ -8,6 +8,7 @@ var
   cantidad: real;
   pagoValido: boolean;
   opcion: integer;
+  data : string;
 
 begin
     
@@ -28,15 +29,24 @@ begin
     case opcion of
         1: 
         begin
-          { Llamada a IniciarPago, RealizarPago y ValidarPago de uPagoTarjeta }
+          uPagoTarjeta.IniciarPago;
+          readln(data);
+          uPagoTarjeta.RealizarPago(data, cantidad);
+          pagoValido := uPagoTarjeta.ValidarPago(data);
         end;
         2:
         begin
-          { Llamada a IniciarPago, RealizarPago y ValidarPago de uPagoTransferencia }
+          uPagoTransferencia.IniciarPago;
+          readln(data);
+          uPagoTransferencia.RealizarPago(data, cantidad);
+          pagoValido := uPagoTransferencia.ValidarPago(data);
         end;
         3:
         begin
-          { Llamada a IniciarPago, RealizarPago y ValidarPago de uPagoBizum }
+          uPagoBizum.IniciarPago;
+          readln(data);
+          uPagoBizum.RealizarPago(data, cantidad);
+          pagoValido := uPagoBizum.ValidarPago(data);
         end;
 
         else
