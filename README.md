@@ -70,23 +70,23 @@ Esta función devuelve la parte imaginaria de un número complejo.
 ### 6. `Sumar`
 
 ```pascal
-function Sumar(c1, c2: TComplejo): TComplejo;
+procedure Sumar(var res: TComplejo; c1, c2: TComplejo);
 ```
 
-Esta función suma dos números complejos y devuelve el resultado. Para sumar dos números complejos, se suman las partes reales y las partes imaginarias por separado.
+Este procedimiento suma dos números complejos y devuelve el resultado. Para sumar dos números complejos, se suman las partes reales y las partes imaginarias por separado. El resultado se almacena en el número complejo `res` que se pasa por referencia.
 
 ### 7. `Restar`
 
 ```pascal
-function Restar(c1, c2: TComplejo): TComplejo;
+procedure Restar(var res: TComplejo; c1, c2: TComplejo);
 ```
 
-Esta función resta dos números complejos y devuelve el resultado. Para restar dos números complejos, se restan las partes reales y las partes imaginarias por separado.
+Esta función resta dos números complejos y devuelve el resultado. Para restar dos números complejos, se restan las partes reales y las partes imaginarias por separado. El resultado se almacena en el número complejo `res` que se pasa por referencia.
 
 ### 8. `Multiplicar`
 
 ```pascal
-function Multiplicar(c1, c2: TComplejo): TComplejo;
+procedure Multiplicar(var res: TComplejo; c1, c2: TComplejo);
 ```
 
 Esta función multiplica dos números complejos y devuelve el resultado. Para multiplicar dos números complejos, se utilizan las siguientes fórmulas:
@@ -95,10 +95,13 @@ Esta función multiplica dos números complejos y devuelve el resultado. Para mu
 (a + bi) * (c + di) = (a*c - b*d) + (a*d + b*c)i
 ```
 
+El resultado se almacena en el número complejo `res` que se pasa por referencia.
+
+
 ### 9. `Dividir`
 
 ```pascal
-function Dividir(c1, c2: TComplejo): TComplejo;
+procedure Dividir(var res: TComplejo; c1, c2: TComplejo);
 ```
 
 Esta función divide dos números complejos y devuelve el resultado. Para dividir dos números complejos, se utilizan las siguientes fórmulas:
@@ -107,13 +110,17 @@ Esta función divide dos números complejos y devuelve el resultado. Para dividi
 (a + bi) / (c + di) = ((a*c + b*d) / (c^2 + d^2)) + ((b*c - a*d) / (c^2 + d^2))i
 ```
 
+El resultado se almacena en el número complejo `res` que se pasa por referencia.
+
 ### 10. `Potencia`
 
 ```pascal
-function Potencia(c: TComplejo; exponente: Integer): TComplejo;
+procedure Potencia(var res: TComplejo; c: TComplejo; exponente: Integer);
 ```
 
 Esta función eleva un número complejo a una potencia entera y devuelve el resultado. Para elevar un número complejo a una potencia entera... dejaré que lo averigüeis. 
+
+El resultado se almacena en el número complejo `res` que se pasa por referencia.
 
 ## Implementación
 
@@ -138,32 +145,32 @@ El archivo `tad_ej2_pagar.pas` utiliza las unidades `uPagoTarjeta.pas`, `uPagoTr
 procedure IniciarPago;
 ```
 
-Este procedimiento solicita la información necesaria para iniciar el pago. La información solicitada varía según el método de pago:
-- Para `uPagoTarjeta.pas`, solicita el número de tarjeta y la fecha de caducidad.
+Este procedimiento muestra un mensaje de inicio de pago y solicita la información necesaria para realizar el pago. La información solicitada varía según el método de pago:
+- Para `uPagoTarjeta.pas`, solicita el número de tarjeta.
 - Para `uPagoTransferencia.pas`, solicita el número de cuenta IBAN.
 - Para `uPagoBizum.pas`, solicita el número de teléfono.
 
 ### 2. `RealizarPago`
 
 ```pascal
-procedure RealizarPago(monto: real);
+procedure RealizarPago(<<tipo-de-pago>>: string; monto: real);
 ```
 
 Este procedimiento realiza el pago por el monto especificado. La implementación varía según el método de pago:
-- Para `uPagoTarjeta.pas`, muestra un mensaje indicando que se está realizando el pago con tarjeta.
-- Para `uPagoTransferencia.pas`, muestra un mensaje indicando que se está realizando una transferencia bancaria.
-- Para `uPagoBizum.pas`, muestra un mensaje indicando que se está realizando un pago por Bizum.
+- Para `uPagoTarjeta.pas`, muestra un mensaje indicando que se está realizando el pago con tarjeta. En este caso `<<tipo-de-pago>>` es "Tarjeta".
+- Para `uPagoTransferencia.pas`, muestra un mensaje indicando que se está realizando una transferencia bancaria con el IBAN proporcionado. En este caso `<<tipo-de-pago>>` es "iban".
+- Para `uPagoBizum.pas`, muestra un mensaje indicando que se está realizando un pago por Bizum. En este caso `<<tipo-de-pago>>` es "teléfono".
 
 ### 3. `ValidarPago`
 
 ```pascal
-function ValidarPago: boolean;
+function ValidarPago(<<tipo-de-pago>>: string): boolean;
 ```
 
 Esta función valida la información proporcionada para el pago. La validación varía según el método de pago:
-- Para `uPagoTarjeta.pas`, valida que el número de tarjeta tenga 16 dígitos.
-- Para `uPagoTransferencia.pas`, valida que el número de cuenta IBAN tenga 24 caracteres.
-- Para `uPagoBizum.pas`, valida que el número de teléfono tenga 9 dígitos.
+- Para `uPagoTarjeta.pas`, valida que el número de tarjeta tenga 16 dígitos. En este caso `<<tipo-de-pago>>` es "Tarjeta".
+- Para `uPagoTransferencia.pas`, valida que el número de cuenta IBAN tenga 24 caracteres. En este caso `<<tipo-de-pago>>` es "iban".
+- Para `uPagoBizum.pas`, valida que el número de teléfono tenga 9 dígitos. En este caso `<<tipo-de-pago>>` es "teléfono".
 
 ## Implementación
 
