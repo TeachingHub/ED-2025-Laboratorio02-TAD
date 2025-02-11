@@ -4,6 +4,9 @@ program tad_ej3_gestion_academica.pas;
 uses
   uPersona, uAsignaturaEvalContinua, uAsignaturaEvalFinal;
 
+
+
+
 var
   Profesor: PPersona;
   Alumno1, Alumno2: PPersona;
